@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        reactiveconsumer:
+          destination: rss-exchange-reactive
+          group: requester-reactive
+          consumer:
+            max-attempts: 1
+      function:
+        bindings:
+          rssConsumer-in-0: reactiveconsumer        
+        definition: rssConsumer 
+      
+  application:
+    name: worker-stream
